@@ -224,11 +224,10 @@
 <!-- Body starts-->
 <body class="bg-secondary">
 
-<!-- /////////////////////////////////  Navigation begins ///////////////////////////////// -->
-<div id="nav-sticky-position">
 
-    <!-- Sign in / sign up modal-->
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+<!-- /////////////////////////////////  Navigation begins ///////////////////////////////// -->
+    <!-- Sign in / sign up modal starts -->
+    <div class="modal carousel-fade" id="signin-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-secondary">
@@ -248,10 +247,10 @@
                     <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate
                           id="signin-tab">
                         <div class="mb-3">
-                            <label class="form-label" for="si-email">Email address</label>
-                            <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com"
+                            <label class="form-label" for="id">ID</label>
+                            <input class="form-control" type="email" id="id" placeholder="veganlife123"
                                    required>
-                            <div class="invalid-feedback">Please provide a valid email address.</div>
+                            <div class="invalid-feedback">Please provide the correct user ID</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="si-password">Password</label>
@@ -263,26 +262,14 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="mb-3 d-flex flex-wrap justify-content-between">
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="si-remember">
-                                <label class="form-check-label" for="si-remember">Remember me</label>
-                            </div>
-                            <a class="fs-sm" href="#">Forgot password?</a>
-                        </div>
+                        <!-- here, when btn is clicked, ajax call for sign in api -->
                         <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
                     </form>
                     <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
                         <div class="mb-3">
-                            <label class="form-label" for="su-name">Full name</label>
-                            <input class="form-control" type="text" id="su-name" placeholder="John Doe" required>
-                            <div class="invalid-feedback">Please fill in your name.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="su-email">Email address</label>
-                            <input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com"
-                                   required>
-                            <div class="invalid-feedback">Please provide a valid email address.</div>
+                            <label class="form-label" for="id">ID</label>
+                            <input class="form-control" type="text" id="id" placeholder="John Doe" required>
+                            <div class="invalid-feedback">Please fill in your use ID</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="su-password">Password</label>
@@ -304,12 +291,60 @@
                                 </label>
                             </div>
                         </div>
+                        <!-- here, when btn is clicked, ajax call for sign up api -->
                         <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Sign in / sign up modal ends-->
+
+    <!-- Sign in / sign up modal for admin starts -->
+    <div class="modal carousel-fade" id="signin-modal-admin" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary">
+                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                        <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab"
+                                                data-bs-toggle="tab"
+                                                data-bs-toggle="tab"
+                                                role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign
+                            in</a></li>
+                    </ul>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body tab-content py-4">
+                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate
+                          id="signin-tab">
+                        <div class="mb-3">
+                            <label class="form-label" for="id">Admin ID</label>
+                            <input class="form-control" type="email" id="id" placeholder="vegan-admin123"
+                                   required>
+                            <div class="invalid-feedback">Please provide the correct admin user ID</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="si-password">Password</label>
+                            <div class="password-toggle">
+                                <input class="form-control" type="password" id="si-password" required>
+                                <label class="password-toggle-btn" aria-label="Show/hide password">
+                                    <input class="password-toggle-check" type="checkbox"><span
+                                        class="password-toggle-indicator"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- here, when btn is clicked, trigger admin login api which will validate the info and forward to the admin/sales view  -->
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sign in / sign up modal admin ends-->
+
+
+<div id="nav-sticky-position">
+
 
     <header class="navigation bg-light shadow-sm fixed-top">
         <div class="navbar navbar-expand-lg navbar-light">
@@ -323,12 +358,11 @@
                         class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
                     <input class="form-control rounded-start w-25" type="text" placeholder="Search for products">
                     <select class="form-select flex-shrink-0" style="width: 10rem;">
-                        <option>All Categories</option>
-                        <option>{ 불러온 카테고리 }</option>
-                        <option>{ 불러온 카테고리 }</option>
-                        <option>{ 불러온 카테고리 }</option>
-                        <option>{ 불러온 카테고리 }</option>
-                        <option>{ 불러온 카테고리 }</option>
+                        <option value="all">All Categories</option>
+                        <option value="meat">비건 대체 육류</option>
+                        <option value="dairy">비건 대체 유제품</option>
+                        <option value="snack">비건 스낵</option>
+                        <option value="condiment">비건 소스/조미료</option>
                     </select>
                 </div>
 
@@ -362,10 +396,16 @@
                     <!-- if not logged in    -->
                     <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
                         <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
-                        <div class="navbar-tool-text ms-n3"><small>Hello, Sign in</small>My Account</div>
+                        <div class="navbar-tool-text ms-n3"><small>Sign in</small>Customer</div>
                     </a>
                     <!-- add logic -> if logged in
                      add <small>Hello, User {유저 이름}</small></div> -->
+
+                    <!-- Admin Login Modal -->
+                    <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal-admin" data-bs-toggle="modal">
+                        <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-store"></i></div>
+                        <div class="navbar-tool-text ms-n3">Admin</div>
+                    </a>
 
                     <!-- Cart Widget starts -->
                     <div class="navbar-tool dropdown ms-3">
@@ -500,15 +540,15 @@
 
         <!-- run for-loop to retrieve top 5 keywords -->
         <!-- retrieve top keywords from (db table perhaps?..needs planning) and print them out here-->
-        #<a href="#" class="rounded-pill btn-tag btn-danger btn-shadow mb-2">{ 탑 키워드 1 }</a>
+        #<a href="#" class="rounded-pill btn-tag btn-primary btn-shadow mb-2">{ 탑 키워드 1 }</a>
         <!-- retrieve top keywords from (db table perhaps?..needs planning) and print them out here-->
-        #<a href="#" class="rounded-pill btn-tag btn-danger btn-shadow mb-2">{ 탑 키워드 2 }</a>
+        #<a href="#" class="rounded-pill btn-tag btn-primary btn-shadow mb-2">{ 탑 키워드 2 }</a>
         <!-- retrieve top keywords from (db table perhaps?..needs planning) and print them out here-->
-        #<a href="#" class="rounded-pill btn-tag btn-danger btn-shadow  mb-2">{ 탑 키워드 3 }</a>
+        #<a href="#" class="rounded-pill btn-tag btn-primary btn-shadow  mb-2">{ 탑 키워드 3 }</a>
         <!-- retrieve top keywords from (db table perhaps?..needs planning) and print them out here-->
-        #<a href="#" class="rounded-pill btn-tag btn-danger btn-shadow mb-2">{ 탑 키워드 4 }</a>
+        #<a href="#" class="rounded-pill btn-tag btn-primary btn-shadow mb-2">{ 탑 키워드 4 }</a>
         <!-- retrieve top keywords from (db table perhaps?..needs planning) and print them out here-->
-        #<a href="#" class="rounded-pill btn-tag btn-danger btn-shadow mb-2">{ 탑 키워드 5 }</a>
+        #<a href="#" class="rounded-pill btn-tag btn-primary btn-shadow mb-2">{ 탑 키워드 5 }</a>
 
     </p>
 </div>
@@ -757,17 +797,6 @@
                         </video>
                     </div>
                 </div>
-
-                <!-- bs5 version
-                <div class="position-relative bg-size-cover bg-position-center py-5"
-                     style="background-image: url('../assets/img/logo/GentleGourmetLogo_darkbg.jpg');">
-                    <span class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-50"></span>
-                    <div class="position-relative px-3 py-5 my-sm-5 text-center zindex-5">
-                        <a href="../assets/vid/promo-vid.mp4" class="btn-video my-2" data-bs-toggle="video"></a>
-                        <br>
-                        <span class="fs-2 text-light text-shadow">We Are Vegans!</span>
-                    </div>
-                </div>-->
                 <!-- //////////////////////////////// Promo video ends ////////////////////////////////-->
 
 
@@ -779,9 +808,9 @@
                     </div>
                     <div class="tns-carousel tns-controls-static tns-controls-outside tns-dots-enabled pt-2">
                         <div class="tns-carousel-inner"
-                             data-carousel-options='{&quot;mode&quot;: "carousel", &quot;autoplay&quot;: true, &quot;speed&quot;:2000, &quot;items&quot;:4, &quot;gutter&quot;:40, &quot;control&quot;: true, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1}, &quot;480&quot;:{&quot;items&quot;:2}, &quot;720&quot;:{&quot;items&quot;:3}, &quot;991&quot;:{&quot;items&quot;:2}, &quot;1140&quot;:{&quot;items&quot;:3}, &quot;1300&quot;:{&quot;items&quot;:4}}}'>
 
-                            <!--  here, need a for-loop to fetch top 5 most sold items to print out -->
+                             data-carousel-options='{&quot;mode&quot;: "carousel", &quot;autoplay&quot;: true, &quot;speed&quot;:2000, &quot;items&quot;:4, &quot;gutter&quot;:40, &quot;control&quot;: true, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1}, &quot;480&quot;:{&quot;items&quot;:2}, &quot;720&quot;:{&quot;items&quot;:3}, &quot;991&quot;:{&quot;items&quot;:2}, &quot;1140&quot;:{&quot;items&quot;:3}, &quot;1300&quot;:{&quot;items&quot;:4}}}'>
+                        <!--  here, need a for-loop to fetch top 5 most sold items to print out -->
 
                             <!-- Product-->
                             <div>

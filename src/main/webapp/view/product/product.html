@@ -207,92 +207,125 @@
 <div class="centered-content">
 
   <!-- /////////////////////////////////  Navigation begins ///////////////////////////////// -->
-  <div id="nav-sticky-position">
-
-
-    <!-- Sign in / sign up modal-->
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-secondary">
-            <ul class="nav nav-tabs card-header-tabs" role="tablist">
-              <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab"
-                                      data-bs-toggle="tab"
-                                      data-bs-toggle="tab"
-                                      role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign
-                in</a></li>
-              <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab"
-                                      role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Sign
-                up</a></li>
-            </ul>
-            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body tab-content py-4">
-            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate
-                  id="signin-tab">
-              <div class="mb-3">
-                <label class="form-label" for="si-email">Email address</label>
-                <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com"
-                       required>
-                <div class="invalid-feedback">Please provide a valid email address.</div>
+  <!-- Sign in / sign up modal starts -->
+  <div class="modal carousel-fade" id="signin-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary">
+          <ul class="nav nav-tabs card-header-tabs" role="tablist">
+            <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-toggle="tab"
+                                    role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign
+              in</a></li>
+            <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab"
+                                    role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Sign
+              up</a></li>
+          </ul>
+          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body tab-content py-4">
+          <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate
+                id="signin-tab">
+            <div class="mb-3">
+              <label class="form-label" for="id">ID</label>
+              <input class="form-control" type="email" id="id" placeholder="veganlife123"
+                     required>
+              <div class="invalid-feedback">Please provide the correct user ID</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="si-password">Password</label>
+              <div class="password-toggle">
+                <input class="form-control" type="password" id="si-password" required>
+                <label class="password-toggle-btn" aria-label="Show/hide password">
+                  <input class="password-toggle-check" type="checkbox"><span
+                        class="password-toggle-indicator"></span>
+                </label>
               </div>
-              <div class="mb-3">
-                <label class="form-label" for="si-password">Password</label>
-                <div class="password-toggle">
-                  <input class="form-control" type="password" id="si-password" required>
-                  <label class="password-toggle-btn" aria-label="Show/hide password">
-                    <input class="password-toggle-check" type="checkbox"><span
-                          class="password-toggle-indicator"></span>
-                  </label>
-                </div>
+            </div>
+            <!-- here, when btn is clicked, ajax call for sign in api -->
+            <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
+          </form>
+          <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+            <div class="mb-3">
+              <label class="form-label" for="id">ID</label>
+              <input class="form-control" type="text" id="id" placeholder="John Doe" required>
+              <div class="invalid-feedback">Please fill in your use ID</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="su-password">Password</label>
+              <div class="password-toggle">
+                <input class="form-control" type="password" id="su-password" required>
+                <label class="password-toggle-btn" aria-label="Show/hide password">
+                  <input class="password-toggle-check" type="checkbox"><span
+                        class="password-toggle-indicator"></span>
+                </label>
               </div>
-              <div class="mb-3 d-flex flex-wrap justify-content-between">
-                <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" id="si-remember">
-                  <label class="form-check-label" for="si-remember">Remember me</label>
-                </div>
-                <a class="fs-sm" href="#">Forgot password?</a>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="su-password-confirm">Confirm password</label>
+              <div class="password-toggle">
+                <input class="form-control" type="password" id="su-password-confirm" required>
+                <label class="password-toggle-btn" aria-label="Show/hide password">
+                  <input class="password-toggle-check" type="checkbox"><span
+                        class="password-toggle-indicator"></span>
+                </label>
               </div>
-              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
-            </form>
-            <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
-              <div class="mb-3">
-                <label class="form-label" for="su-name">Full name</label>
-                <input class="form-control" type="text" id="su-name" placeholder="John Doe" required>
-                <div class="invalid-feedback">Please fill in your name.</div>
-              </div>
-              <div class="mb-3">
-                <label for="su-email">Email address</label>
-                <input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com"
-                       required>
-                <div class="invalid-feedback">Please provide a valid email address.</div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="su-password">Password</label>
-                <div class="password-toggle">
-                  <input class="form-control" type="password" id="su-password" required>
-                  <label class="password-toggle-btn" aria-label="Show/hide password">
-                    <input class="password-toggle-check" type="checkbox"><span
-                          class="password-toggle-indicator"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="su-password-confirm">Confirm password</label>
-                <div class="password-toggle">
-                  <input class="form-control" type="password" id="su-password-confirm" required>
-                  <label class="password-toggle-btn" aria-label="Show/hide password">
-                    <input class="password-toggle-check" type="checkbox"><span
-                          class="password-toggle-indicator"></span>
-                  </label>
-                </div>
-              </div>
-              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
-            </form>
-          </div>
+            </div>
+            <!-- here, when btn is clicked, ajax call for sign up api -->
+            <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
+          </form>
         </div>
       </div>
     </div>
+  </div>
+  <!-- Sign in / sign up modal ends-->
+
+  <!-- Sign in / sign up modal for admin starts -->
+  <div class="modal carousel-fade" id="signin-modal-admin" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary">
+          <ul class="nav nav-tabs card-header-tabs" role="tablist">
+            <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-toggle="tab"
+                                    role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign
+              in</a></li>
+          </ul>
+          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body tab-content py-4">
+          <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate
+                id="signin-tab">
+            <div class="mb-3">
+              <label class="form-label" for="id">Admin ID</label>
+              <input class="form-control" type="email" id="id" placeholder="vegan-admin123"
+                     required>
+              <div class="invalid-feedback">Please provide the correct admin user ID</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="si-password">Password</label>
+              <div class="password-toggle">
+                <input class="form-control" type="password" id="si-password" required>
+                <label class="password-toggle-btn" aria-label="Show/hide password">
+                  <input class="password-toggle-check" type="checkbox"><span
+                        class="password-toggle-indicator"></span>
+                </label>
+              </div>
+            </div>
+            <!-- here, when btn is clicked, trigger admin login api which will validate the info and forward to the admin/sales view  -->
+            <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sign in / sign up modal admin ends-->
+
+
+  <div id="nav-sticky-position">
+
 
     <header class="navigation bg-light shadow-sm fixed-top">
       <div class="navbar navbar-expand-lg navbar-light">
@@ -345,10 +378,17 @@
             <!-- if not logged in    -->
             <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
               <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
-              <div class="navbar-tool-text ms-n3"><small>Hello, Sign in</small>My Account</div>
+              <div class="navbar-tool-text ms-n3"><small>Sign in</small>Customer</div>
             </a>
             <!-- add logic -> if logged in
              add <small>Hello, User {유저 이름}</small></div> -->
+
+            <!-- Admin Login Modal -->
+            <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal-admin" data-bs-toggle="modal">
+              <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-store"></i></div>
+              <div class="navbar-tool-text ms-n3">Admin</div>
+            </a>
+
 
             <!-- Cart Widget starts -->
             <div class="navbar-tool dropdown ms-3">
@@ -474,8 +514,8 @@
     </header>
 
   </div> <!-- nav-bar stikcy position ends -->
-
   <!-- /////////////////////////////////  Navigation ends ///////////////////////////////// -->
+
 
 
   <main id="main-center-alignment" style="padding-top: 5rem;">
@@ -488,25 +528,31 @@
       <!-- ////////////////////////////////// Page title & breadcrumbs //////////////////////////////////-->
       <section id="product-page-title" class="ps-lg-3 pe-auto pt-4">
         <div id="page-title-bg" class="page-title-overlap pt-4">
+
+
           <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
 
-            <!-- Breadcrumbs -->
-            <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
-              <nav class="mb-4" aria-label="breadcrumb">
-                <ol class="breadcrumb flex-lg-nowrap">
-                  <li class="breadcrumb-item"><a class="text-nowrap text-light" href="../home.html"><i class="ci-home"></i>Home</a></li>
+            <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
+              <div class="d-flex align-items-center pb-3">
+                <div class="img-thumbnail rounded-circle position-relative flex-shrink-0" style="width: 6.375rem;"><img class="rounded-circle" src="../../assets/img/etc/vegan-logo.png" alt="vegan logo"></div>
+                <div class="ps-3">
+                  <h3 class="text-light fs-xl mb-0">Vegan Product</h3><span class="d-block text-light fs-md opacity-60 py-1">We Love Vegan</span>
+                </div>
+              </div>
 
-                  <!-- here, make sure to insert the brandId of the product in the link.. ie. href="../category-and-brand?brandId={}"-->
-                  <li class="breadcrumb-item"><a class="text-nowrap text-light" href="category-and-brand.html"><i class="ci-bookmark"></i>Brand</a></li>
 
-                  <li class="breadcrumb-item text-nowrap active text-light" aria-current="page">Product</li>
-                </ol>
-              </nav>
-            </div>
+              <div class="d-flex">
+                <nav class="mb-4" aria-label="breadcrumb">
+                  <ol class="breadcrumb flex-lg-nowrap">
+                    <li class="breadcrumb-item"><a class="text-nowrap text-light" href="../home.html"><i class="ci-home"></i>Home</a></li>
 
-            <!-- page title -->
-            <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-              <h1 class="h1 text-light mb-0">Vegan Product</h1>
+                    <!-- here, make sure to insert the brandId of the product in the link.. ie. href="../category-and-brand?brandId={}"-->
+                    <li class="breadcrumb-item"><a class="text-nowrap text-light" href="category-and-brand.html"><i class="ci-bookmark"></i>Brand</a></li>
+
+                    <li class="breadcrumb-item text-nowrap active text-light" aria-current="page">Product</li>
+                  </ol>
+                </nav>
+              </div>
             </div>
 
           </div>
