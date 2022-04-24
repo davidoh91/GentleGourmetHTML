@@ -295,7 +295,7 @@
       <header class="navigation bg-light shadow-sm fixed-top">
         <div class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
-            <a class="navbar-brand d-none d-sm-block me-3 me-xl-4 flex-shrink-0" href="../home.html">
+            <a class="navbar-brand d-none d-sm-block me-3 me-xl-4 flex-shrink-0" href="../homeOld.html">
               <img src="../../assets/img/logo/GentleGourmetLogo2.png" width="300" alt="Gentle Gourmet">
             </a>
 
@@ -489,7 +489,7 @@
               <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
                 <nav class="mb-4" aria-label="breadcrumb">
                   <ol class="breadcrumb flex-lg-nowrap">
-                    <li class="breadcrumb-item"><a class="text-nowrap text-light" href="../home.html"><i class="ci-home"></i>Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-nowrap text-light" href="../homeOld.html"><i class="ci-home"></i>Home</a></li>
 
                     <!-- here, make sure to insert the brandId of the product in the link.. ie. href="../category-and-brand?brandId={}"-->
                     <li class="breadcrumb-item"><a class="text-nowrap text-light" href="category-and-brand.html"><i class="ci-bookmark"></i>Brand</a></li>
@@ -908,7 +908,7 @@
             }
           }).done(function(data){ //on callback success
             alert("결제에 성공하였습니다");
-            //redirect to home.html
+            //redirect to homeOld.html
           })
         }else { //on callback failure
           alert("결제에 실패하였습니다. 에러내용: " + rsp.error_msg);
