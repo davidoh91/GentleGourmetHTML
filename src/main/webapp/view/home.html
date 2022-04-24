@@ -32,7 +32,7 @@
             top: 0;
             left: 0;
 
-            /* Preserve aspet ratio */
+            /* Preserve aspect ratio */
             min-width: 100%;
             min-height: 100%;
             z-index: -1;
@@ -106,6 +106,8 @@
 
         header {
             background-color: #75C154;
+            /* test test test test*/
+            opacity: 0; /* ** addition ** */
         }
 
         footer {
@@ -155,6 +157,13 @@
         #side-nav-sticky-position {
             position: sticky;
             z-index: 1;
+
+        }
+
+        #sideNav {
+            /* test test test test*/
+            opacity: 0; /* ** addition ** */
+            transition: opacity 1s ease-in-out;
         }
 
         #nav-sticky-position {
@@ -167,6 +176,8 @@
             top: 120px;
             margin-left: 380px;
             z-index: 3;
+            /* test test test test*/
+            opacity: 0; /* ** addition ** */
         }
 
         #videosList {
@@ -189,33 +200,15 @@
             border-radius: 40px;
         }
 
+        /* ** addition ** */
+        .parallax-banner {
+            min-height: 2000px;
+            background: url("../assets/img/background/bg17.jpg") center center/cover;
+            z-index: -1;
+        }
+
+
     </style>
-
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-
-            $(".video").hover(hoverVideo, hideVideo);
-
-            let vidEle = document.getElementById("theVideo");
-
-            function hoverVideo(e) {
-                $('video', this).get(0).play();
-                //if muted, unmute
-                vidEle.muted = false;
-                // console.log(vidEle);
-                // console.log(vidEle.muted);
-            }
-
-            function hideVideo(e) {
-                // $('video', this).get(0).pause();
-
-                //once mouseover, mute
-                vidEle.muted = true;
-            }
-
-        }); //jQuery ends
-    </script>
     <!-- /////////////////////////////////  copy this in every file  ///////////////////////////////// -->
 
 </head>
@@ -224,130 +217,133 @@
 <!-- Body starts-->
 <body class="bg-secondary">
 
+<!-- parallax-banner-image -->
+<div class="parallax-banner rellax" data-rellax-speed="-7"> <!-- ** addition ** -->
+</div>
 
 <!-- /////////////////////////////////  Navigation begins ///////////////////////////////// -->
-    <!-- Sign in / sign up modal starts -->
-    <div class="modal carousel-fade" id="signin-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-secondary">
-                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                        <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab"
-                                                data-bs-toggle="tab"
-                                                data-bs-toggle="tab"
-                                                role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign
-                            in</a></li>
-                        <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab"
-                                                role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Sign
-                            up</a></li>
-                    </ul>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body tab-content py-4">
-                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate
-                          id="signin-tab">
-                        <div class="mb-3">
-                            <label class="form-label" for="id">ID</label>
-                            <input class="form-control" type="email" id="id" placeholder="veganlife123"
-                                   required>
-                            <div class="invalid-feedback">Please provide the correct user ID</div>
+<!-- Sign in / sign up modal starts -->
+<div class="modal carousel-fade" id="signin-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-secondary">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                    <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-toggle="tab"
+                                            role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign
+                        in</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab"
+                                            role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Sign
+                        up</a></li>
+                </ul>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body tab-content py-4">
+                <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate
+                      id="signin-tab">
+                    <div class="mb-3">
+                        <label class="form-label" for="id">ID</label>
+                        <input class="form-control" type="email" id="id" placeholder="veganlife123"
+                               required>
+                        <div class="invalid-feedback">Please provide the correct user ID</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="si-password">Password</label>
+                        <div class="password-toggle">
+                            <input class="form-control" type="password" id="si-password" required>
+                            <label class="password-toggle-btn" aria-label="Show/hide password">
+                                <input class="password-toggle-check" type="checkbox"><span
+                                    class="password-toggle-indicator"></span>
+                            </label>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="si-password">Password</label>
-                            <div class="password-toggle">
-                                <input class="form-control" type="password" id="si-password" required>
-                                <label class="password-toggle-btn" aria-label="Show/hide password">
-                                    <input class="password-toggle-check" type="checkbox"><span
-                                        class="password-toggle-indicator"></span>
-                                </label>
-                            </div>
+                    </div>
+                    <!-- here, when btn is clicked, ajax call for sign in api -->
+                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
+                </form>
+                <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+                    <div class="mb-3">
+                        <label class="form-label" for="id">ID</label>
+                        <input class="form-control" type="text" id="id" placeholder="John Doe" required>
+                        <div class="invalid-feedback">Please fill in your use ID</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="su-password">Password</label>
+                        <div class="password-toggle">
+                            <input class="form-control" type="password" id="su-password" required>
+                            <label class="password-toggle-btn" aria-label="Show/hide password">
+                                <input class="password-toggle-check" type="checkbox"><span
+                                    class="password-toggle-indicator"></span>
+                            </label>
                         </div>
-                        <!-- here, when btn is clicked, ajax call for sign in api -->
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
-                    </form>
-                    <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
-                        <div class="mb-3">
-                            <label class="form-label" for="id">ID</label>
-                            <input class="form-control" type="text" id="id" placeholder="John Doe" required>
-                            <div class="invalid-feedback">Please fill in your use ID</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="su-password-confirm">Confirm password</label>
+                        <div class="password-toggle">
+                            <input class="form-control" type="password" id="su-password-confirm" required>
+                            <label class="password-toggle-btn" aria-label="Show/hide password">
+                                <input class="password-toggle-check" type="checkbox"><span
+                                    class="password-toggle-indicator"></span>
+                            </label>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="su-password">Password</label>
-                            <div class="password-toggle">
-                                <input class="form-control" type="password" id="su-password" required>
-                                <label class="password-toggle-btn" aria-label="Show/hide password">
-                                    <input class="password-toggle-check" type="checkbox"><span
-                                        class="password-toggle-indicator"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="su-password-confirm">Confirm password</label>
-                            <div class="password-toggle">
-                                <input class="form-control" type="password" id="su-password-confirm" required>
-                                <label class="password-toggle-btn" aria-label="Show/hide password">
-                                    <input class="password-toggle-check" type="checkbox"><span
-                                        class="password-toggle-indicator"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <!-- here, when btn is clicked, ajax call for sign up api -->
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
-                    </form>
-                </div>
+                    </div>
+                    <!-- here, when btn is clicked, ajax call for sign up api -->
+                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
+                </form>
             </div>
         </div>
     </div>
-    <!-- Sign in / sign up modal ends-->
+</div>
+<!-- Sign in / sign up modal ends-->
 
-    <!-- Sign in / sign up modal for admin starts -->
-    <div class="modal carousel-fade" id="signin-modal-admin" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-secondary">
-                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                        <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab"
-                                                data-bs-toggle="tab"
-                                                data-bs-toggle="tab"
-                                                role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign
-                            in</a></li>
-                    </ul>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body tab-content py-4">
-                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate
-                          id="signin-tab">
-                        <div class="mb-3">
-                            <label class="form-label" for="id">Admin ID</label>
-                            <input class="form-control" type="email" id="id" placeholder="vegan-admin123"
-                                   required>
-                            <div class="invalid-feedback">Please provide the correct admin user ID</div>
+<!-- Sign in / sign up modal for admin starts -->
+<div class="modal carousel-fade" id="signin-modal-admin" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-secondary">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                    <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-toggle="tab"
+                                            role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign
+                        in</a></li>
+                </ul>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body tab-content py-4">
+                <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate
+                      id="signin-tab">
+                    <div class="mb-3">
+                        <label class="form-label" for="id">Admin ID</label>
+                        <input class="form-control" type="email" id="id" placeholder="vegan-admin123"
+                               required>
+                        <div class="invalid-feedback">Please provide the correct admin user ID</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="si-password">Password</label>
+                        <div class="password-toggle">
+                            <input class="form-control" type="password" id="si-password" required>
+                            <label class="password-toggle-btn" aria-label="Show/hide password">
+                                <input class="password-toggle-check" type="checkbox"><span
+                                    class="password-toggle-indicator"></span>
+                            </label>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="si-password">Password</label>
-                            <div class="password-toggle">
-                                <input class="form-control" type="password" id="si-password" required>
-                                <label class="password-toggle-btn" aria-label="Show/hide password">
-                                    <input class="password-toggle-check" type="checkbox"><span
-                                        class="password-toggle-indicator"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <!-- here, when btn is clicked, trigger admin login api which will validate the info and forward to the admin/sales view  -->
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
-                    </form>
-                </div>
+                    </div>
+                    <!-- here, when btn is clicked, trigger admin login api which will validate the info and forward to the admin/sales view  -->
+                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
+                </form>
             </div>
         </div>
     </div>
-    <!-- Sign in / sign up modal admin ends-->
+</div>
+<!-- Sign in / sign up modal admin ends-->
 
 
 <div id="nav-sticky-position">
 
 
     <header class="navigation bg-light shadow-sm fixed-top">
-        <div class="navbar navbar-expand-lg navbar-light">
+        <div id="nav-scroll-fade-in" class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 <a class="navbar-brand d-none d-sm-block me-3 me-xl-4 flex-shrink-0" href="../home.html">
                     <img src="../assets/img/logo/GentleGourmetLogo2.png" width="300" alt="Gentle Gourmet">
@@ -559,7 +555,7 @@
 <!-- relative position for side nav -->
 <div id="side-nav-sticky-position">
 
-    <aside class="offcanvas offcanvas-expand w-100 border-end zindex-lg-5 pt-lg-5" id="sideNav"
+    <aside id="sideNav" class="offcanvas offcanvas-expand w-100 border-end zindex-lg-5 pt-lg-5"
            style="max-width: 21.875rem;">
 
         <div id="side-nav-extra-padding"></div>
@@ -780,8 +776,8 @@
 
 
 <!-- ///////////////////////////////// Main page starts ///////////////////////////////// -->
-<main id="main-sticky-position" class="offcanvas-enabled section-bg" style="padding-top: 5rem;">
-    <section class="ps-lg-4 pe-lg-3 pt-4">
+<main id="main-sticky-position" class="offcanvas-enabled section-bg"> <!-- omitted style="padding-top: 5rem; -->
+    <section class="rellax ps-lg-4 pe-lg-3 pt-4" data-rellax-speed="2"> <!-- ** addition ** -->
 
         <!-- main-extra-padding -->
         <div id="main-extra-padding">
@@ -793,7 +789,7 @@
                 <div id="videosList">
                     <div class="video">
                         <video id="theVideo" autoplay loop muted>
-                            <source src='../assets/vid/promo-vid.mp4' type="video/mp4">
+                            <source src='../assets/vid/promo-vid2.mp4' type="video/mp4">
                         </video>
                     </div>
                 </div>
@@ -810,7 +806,7 @@
                         <div class="tns-carousel-inner"
 
                              data-carousel-options='{&quot;mode&quot;: "carousel", &quot;autoplay&quot;: true, &quot;speed&quot;:2000, &quot;items&quot;:4, &quot;gutter&quot;:40, &quot;control&quot;: true, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1}, &quot;480&quot;:{&quot;items&quot;:2}, &quot;720&quot;:{&quot;items&quot;:3}, &quot;991&quot;:{&quot;items&quot;:2}, &quot;1140&quot;:{&quot;items&quot;:3}, &quot;1300&quot;:{&quot;items&quot;:4}}}'>
-                        <!--  here, need a for-loop to fetch top 5 most sold items to print out -->
+                            <!--  here, need a for-loop to fetch top 5 most sold items to print out -->
 
                             <!-- Product-->
                             <div>
@@ -1286,9 +1282,87 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"
         integrity="sha512-f5HTYZYTDZelxS7LEQYv8ppMHTZ6JJWglzeQmr0CVTS70vJgaJiIO15ALqI7bhsracojbXkezUIL+35UXwwGrQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- addition -->
 <script>
     //Init Rellax library
     let rellax = new Rellax('.rellax');
+
+    // for nav-bar fade-in effect as scrolling down
+
+
+</script>
+
+<!-- for promo video -->
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(".video").hover(hoverVideo, hideVideo);
+
+        let vidEle = document.getElementById("theVideo");
+
+        function hoverVideo(e) {
+            $('video', this).get(0).play();
+            //if muted, unmute
+            vidEle.muted = false;
+        }
+
+        function hideVideo(e) {
+            //once mouseover, mute
+            vidEle.muted = true;
+        }
+
+    }); //jQuery ends
+</script>
+
+<!--&lt;!&ndash; for nav-bar & side-nav-bar fade-in &ndash;&gt;-->
+<!--<script type="text/javascript">-->
+
+<!--    $(function() {-->
+<!--        $("#nav-scroll-fade-in").fadeIn("slow", "linear")-->
+<!--    })-->
+<!--</script>-->
+
+
+<!-- change opacity as scrolled down -->
+<script type="text/javascript">
+    $(window).scroll(function() {
+        var scrollTop = $(this).scrollTop();
+        var flag = false;
+
+        $('header').css({
+            opacity: function() {
+                let elementHeight = $(this).height();
+                return ( 1 - (elementHeight - scrollTop) / elementHeight ) / 7;
+            }
+        });
+
+        $('#popular-tags').css({
+            opacity: function() {
+                let elementHeight = $(this).height();
+                return ( 1 - (elementHeight - scrollTop) / elementHeight ) / 14;
+            }
+        });
+
+        //sideNav should fade-in once var scrollTop reaches around 1150;
+        if(scrollTop > 1150) {
+            flag = true;
+        }else if(scrollTop) {
+            flag = false;
+        }
+        if(flag) {
+            //make side-nav visible again
+            $('#sideNav').css({
+                //added animation to gradually increase/decrease opacity
+                opacity: 1
+            });
+        }else {
+            $('#sideNav').css({
+                opacity: 0
+            });
+        }
+    });
 </script>
 
 </body>
