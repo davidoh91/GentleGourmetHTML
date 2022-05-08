@@ -18,7 +18,8 @@
     <link rel="stylesheet" media="screen" href="../../assets/tiny-slider/dist/tiny-slider.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../../assets/css/theme.min.css">
-
+    <!-- Dropzone.js (1) : add CDN link and stylesheet for Dropzone.js -->
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
     <!-- /////////////////////////////////  copy this in every file  ///////////////////////////////// -->
     <style type="text/css">
@@ -160,85 +161,15 @@
         width: 100%;
       }
 
-
-      /* Loading HighCharts CSS */
-      #container-chart {
-        height: 300px;
-        width: 700px;
-      }
-      .highcharts-figure,
-      .highcharts-data-table table {
-        min-width: 310px;
-        max-width: 800px;
-        margin: 1em auto;
-      }
-      .highcharts-data-table table {
-        font-family: Verdana, sans-serif;
-        border-collapse: collapse;
-        border: 1px solid #ebebeb;
-        margin: 10px auto;
-        text-align: center;
-        width: 100%;
-        max-width: 500px;
-      }
-      .highcharts-data-table caption {
-        padding: 1em 0;
-        font-size: 1.2em;
-        color: #444;
-      }
-      .highcharts-data-table th {
-        font-weight: 600;
-        padding: 0.5em;
-      }
-      .highcharts-data-table td,
-      .highcharts-data-table th,
-      .highcharts-data-table caption {
-        padding: 0.5em;
-      }
-      .highcharts-data-table thead tr,
-      .highcharts-data-table tr:nth-child(even) {
-        background: #f8f8f8;
-      }
-      .highcharts-data-table tr:hover {
-        background: #f1f7ff;
+      #myDropzoneContainer {
+        padding: 15px;
+        z-index:3;
       }
 
-      .highcharts-data-table table {
-        min-width: 310px;
-        max-width: 800px;
-        margin: 1em auto;
+      #myDropzone {
+        height: 180px;
       }
-      .highcharts-data-table table {
-        font-family: Verdana, sans-serif;
-        border-collapse: collapse;
-        border: 1px solid #ebebeb;
-        margin: 10px auto;
-        text-align: center;
-        width: 100%;
-        max-width: 500px;
-      }
-      .highcharts-data-table caption {
-        padding: 1em 0;
-        font-size: 1.2em;
-        color: #555;
-      }
-      .highcharts-data-table th {
-        font-weight: 600;
-        padding: 0.5em;
-      }
-      .highcharts-data-table td,
-      .highcharts-data-table th,
-      .highcharts-data-table caption {
-        padding: 0.5em;
-      }
-      .highcharts-data-table thead tr,
-      .highcharts-data-table tr:nth-child(even) {
-        background: #f8f8f8;
-      }
-      .highcharts-data-table tr:hover {
-        background: #f1f7ff;
-      }
-      /* Loading HighCharts CSS done */
+
 
     </style>
   </head>
@@ -629,7 +560,7 @@
           <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
             <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
 
-              <form>
+              <form action="/uploadProduct" enctype="multipart/form-data" method="POST">
                 <div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">
                   <h2 class="h3 py-2 me-2 text-center text-sm-start">Add New Product</h2>
                   <div class="py-2">
@@ -650,11 +581,16 @@
                   </div>
 
                   <!-- implement/replace with the dropzone.js here -->
-                  <div class="file-drop-area mb-3">
+                  <div class="file-drop-area mb-3" id="myDropzoneContainer">
+                    <!--
                     <div class="file-drop-icon ci-cloud-upload"></div><span class="file-drop-message">Drag and drop here to upload product image</span>
                     <input class="file-drop-input" type="file">
                     <button class="file-drop-btn btn btn-primary btn-sm mb-2" type="button">Or select file</button>
-                    <div class="form-text">1000 x 800px ideal size for hi-res displays</div>
+                    -->
+
+                    <!-- Dropzone.js (2) : add the div for Dropzone.js -->
+                    <div class="dropzone" id="myDropzone"></div>
+                    <div class="form-text">Ideal Resolution : <= 1000px x 800px</div>
                   </div>
 
                   <div class="mb-3 py-2">
@@ -682,11 +618,12 @@
                   </div>
 
                   <!-- here, upon button click, take all the data (category, productName, productDescription, productPrice, and productTags) and call api-->
-                  <button class="btn btn-primary d-block w-100" type="submit">
+                  <button class="btn btn-primary d-block w-100" id="submit-all" type="submit">
                     <i class="ci-cloud-upload fs-lg me-2"></i>
                     Upload Product
                   </button>
                 </form>
+
             </div>
           </section>
           <!-- (2) Admin Dashboard Content ends -->
@@ -833,47 +770,40 @@
   <!-- Main theme script-->
   <script src="../../assets/js/theme.min.js"></script>
 
-  <!-- Load HighCharts API -->
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-  <script src="https://code.highcharts.com/modules/cylinder.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
-  <script src="https://code.highcharts.com/modules/export-data.js"></script>
-  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-  <!-- HighChart Script -->
-  <script type="text/javascript">
-    Highcharts.chart('container', {
-      chart: {
-        type: 'pie',
-        options3d: {
-          enabled: true,
-          alpha: 45
-        }
-      },
-      title: { text: "Gentle Gourmet<br>젠틀 고메 비건식품" },
-      subtitle: { text: '판매상품 점유율'},
-      plotOptions: { pie: {innerSize: 100, depth: 45} },
-      series: [{
-        name: '주간 판매',
-        /*
-          here, ajax call to fetch the sales data of all products
-          -> the backend will send data in the form of List<ProductSalesData>,
-              where ProductSalesData is a class with fields : String productName & int totalSales
-         */
-        data: [
-          // [productName, totalSales]
-          ['{productName}<br>₩{totalSales}', 1],
-          ['{productName}<br>₩{totalSales}', 3],
-          ['{productName}<br>₩{totalSales}', 1],
-          ['{productName}<br>₩{totalSales}', 2],
-          ['{productName}<br>₩{totalSales}', 3],
-          ['{productName}<br>₩{totalSales}', 6],
-          ['{productName}<br>₩{totalSales}', 4],
-          ['{productName}<br>₩{totalSales}', 1],
-          ['{productName}<br>₩{totalSales}', 1]
-        ]
-      }]
-    });
+  <!-- Dropzone.js (1) : add CDN link and stylesheet for Dropzone.js -->
+  <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+  <!-- Dropzone.js (3) : add the script for Dropzone.js -->
+  <script>
+
+    Dropzone.options.myDropzone= {
+      url: 'upload.php',
+      autoProcessQueue: false,
+      uploadMultiple: true,
+      parallelUploads: 5,
+      maxFiles: 4,
+      maxFilesize: 5,
+      acceptedFiles: 'image/*',
+      addRemoveLinks: true,
+      createImageThumbnails: true,
+      init: function() {
+        dzClosure = this; // dzClosure = myDropzone? .. Makes sure that 'this' is understood inside the functions below.
+
+        // for Dropzone to process the queue (instead of default form behavior):
+        document.getElementById("submit-all").addEventListener("click", function(e) {
+          // Make sure that the form isn't actually being sent.
+          e.preventDefault();
+          e.stopPropagation();
+          dzClosure.processQueue(); // dzClosure = myDropzone?
+        });
+
+        //send all the form data along with the files:
+        this.on("sendingmultiple", function(data,xhr,formData) {
+          formData.append("firstname", jQuery("#firstname").val());
+          formData.append("lastname", jQuery("#lastname").val());
+        });
+      }
+    }
+
   </script>
 
   </body>
