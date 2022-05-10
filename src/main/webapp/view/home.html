@@ -202,7 +202,7 @@
 
         /* ** addition ** */
         .parallax-banner {
-            min-height: 2000px;
+            min-height: 800px;
             background: url("../assets/img/background/bg17.jpg") center center/cover;
             z-index: -1;
         }
@@ -1331,22 +1331,23 @@
         var scrollTop = $(this).scrollTop();
         var flag = false;
 
+        //top nav-bar and popular tags fade-in as scrolled down
         $('header').css({
             opacity: function() {
                 let elementHeight = $(this).height();
-                return ( 1 - (elementHeight - scrollTop) / elementHeight ) / 7;
+                return ( 1 - (elementHeight - scrollTop) / elementHeight ) / 4;
             }
         });
 
         $('#popular-tags').css({
             opacity: function() {
                 let elementHeight = $(this).height();
-                return ( 1 - (elementHeight - scrollTop) / elementHeight ) / 14;
+                return ( 1 - (elementHeight - scrollTop) / elementHeight ) / 12;
             }
         });
 
-        //sideNav should fade-in once var scrollTop reaches around 1150;
-        if(scrollTop > 1150) {
+        //sideNav should fade-in once var scrollTop reaches around ~;
+        if(scrollTop > 600) {
             flag = true;
         }else if(scrollTop) {
             flag = false;
@@ -1367,7 +1368,7 @@
 
 <!-- add Autoscroll script- -->
 <script>
-    $('html, body').animate({scrollTop: 1850}, 2700, "swing");
+    $('html, body').animate({scrollTop: 700}, 2700, "swing");
 </script>
 
 </body>
