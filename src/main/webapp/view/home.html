@@ -5,14 +5,18 @@
     <title>Gentle Gourmet | Vegan Grocery Store</title>
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <!-- Favicon -->
+    <link rel="shorcut icon" href="../assets/img/etc/vegan-logo.png">
+    <!--
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
+    -->
+
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
     <link rel="stylesheet" media="screen" href="../assets/vendor/simplebar/dist/simplebar.min.css"/>
     <link rel="stylesheet" media="screen" href="../assets/vendor/tiny-slider/dist/tiny-slider.css"/>
@@ -26,7 +30,7 @@
     <!-- /////////////////////////////////  copy this in every file  ///////////////////////////////// -->
     <style type="text/css">
 
-        /* add custom font */
+        /* add custom font (1) */
         @font-face {
             font-family: 'yg-jalnan';
             src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
@@ -35,6 +39,7 @@
         }
 
         body {
+            /* add custom font (2) */
             font-family: "yg-jalnan", "sans-serif" !important;
             z-index: 0
         }
@@ -239,7 +244,7 @@
         <div class="modal-content">
             <div class="modal-header bg-secondary">
                 <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                    <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab"
+                    <li class="nav-item"><a class="nav-link fw-medium active" href="#"
                                             data-bs-toggle="tab"
                                             data-bs-toggle="tab"
                                             role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign
@@ -252,17 +257,17 @@
             </div>
             <div class="modal-body tab-content py-4">
                 <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate
-                      id="signin-tab">
+                      id="userLoginForm">
                     <div class="mb-3">
                         <label class="form-label" for="id">ID</label>
-                        <input class="form-control" type="email" id="id" placeholder="veganlife123"
+                        <input class="form-control" type="email" id="loginInInput" placeholder="veganlife123"
                                required>
                         <div class="invalid-feedback">Please provide the correct user ID</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="si-password">Password</label>
                         <div class="password-toggle">
-                            <input class="form-control" type="password" id="si-password" required>
+                            <input class="form-control" type="password" id="si-password" autocomplete="on" required>
                             <label class="password-toggle-btn" aria-label="Show/hide password">
                                 <input class="password-toggle-check" type="checkbox"><span
                                     class="password-toggle-indicator"></span>
@@ -275,13 +280,13 @@
                 <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
                     <div class="mb-3">
                         <label class="form-label" for="id">ID</label>
-                        <input class="form-control" type="text" id="id" placeholder="John Doe" required>
+                        <input class="form-control" type="text" id="signUpInput" placeholder="iVegan123" required>
                         <div class="invalid-feedback">Please fill in your use ID</div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="su-password">Password</label>
                         <div class="password-toggle">
-                            <input class="form-control" type="password" id="su-password" required>
+                            <input class="form-control" type="password" id="su-password" autocomplete="on" required>
                             <label class="password-toggle-btn" aria-label="Show/hide password">
                                 <input class="password-toggle-check" type="checkbox"><span
                                     class="password-toggle-indicator"></span>
@@ -291,7 +296,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="su-password-confirm">Confirm password</label>
                         <div class="password-toggle">
-                            <input class="form-control" type="password" id="su-password-confirm" required>
+                            <input class="form-control" type="password" id="su-password-confirm" autocomplete="on" required>
                             <label class="password-toggle-btn" aria-label="Show/hide password">
                                 <input class="password-toggle-check" type="checkbox"><span
                                     class="password-toggle-indicator"></span>
@@ -313,7 +318,7 @@
         <div class="modal-content">
             <div class="modal-header bg-secondary">
                 <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                    <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab"
+                    <li class="nav-item"><a class="nav-link fw-medium active" href="#"
                                             data-bs-toggle="tab"
                                             data-bs-toggle="tab"
                                             role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign
@@ -323,7 +328,7 @@
             </div>
             <div class="modal-body tab-content py-4">
                 <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate
-                      id="signin-tab">
+                      id="adminLoginForm">
                     <div class="mb-3">
                         <label class="form-label" for="id">Admin ID</label>
                         <input class="form-control" type="email" id="id" placeholder="vegan-admin123"
@@ -331,9 +336,9 @@
                         <div class="invalid-feedback">Please provide the correct admin user ID</div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="si-password">Password</label>
+                        <label class="form-label" for="si-password2">Password</label>
                         <div class="password-toggle">
-                            <input class="form-control" type="password" id="si-password" required>
+                            <input class="form-control" type="password" id="si-password2" autocomplete="on" required>
                             <label class="password-toggle-btn" aria-label="Show/hide password">
                                 <input class="password-toggle-check" type="checkbox"><span
                                     class="password-toggle-indicator"></span>
@@ -361,9 +366,9 @@
                 </a>
 
                 <!-- Search-->
-                <div class="input-group d-none d-lg-flex flex-nowrap mx-4"><i
-                        class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                    <input class="form-control rounded-start w-25" type="text" placeholder="Search for products">
+                <form id="searchBarForm" action="search-keyword" method="POST" class="input-group d-none d-lg-flex flex-nowrap mx-4">
+                    <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                    <input id="searchBar" class="form-control rounded-start w-25" type="text" placeholder="Search for products">
                     <select class="form-select flex-shrink-0" style="width: 10rem;">
                         <option value="all">All Categories</option>
                         <option value="meat">비건 대체 육류</option>
@@ -371,7 +376,8 @@
                         <option value="snack">비건 스낵</option>
                         <option value="condiment">비건 소스/조미료</option>
                     </select>
-                </div>
+                </form>
+
 
                 <!-- Cook & Our Story links -->
                 <div class="nav-padding">
@@ -417,11 +423,11 @@
                     <!-- Cart Widget starts -->
                     <div class="navbar-tool dropdown ms-3">
                         <a class="navbar-tool-icon-box bg-secondary dropdown-toggle"
-                           href="order/cart-and-checkout.html">
+                           href="order/checkout.html">
                             <span class="navbar-tool-label">{ 카트 아이템 수 }</span>
                             <i class="navbar-tool-icon ci-cart"></i>
                         </a>
-                        <a class="navbar-tool-text" href="order/cart-and-checkout.html"><small>My Cart</small>₩{ 총금액
+                        <a class="navbar-tool-text" href="order/checkout.html"><small>My Cart</small>₩{ 총금액
                             }</a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
@@ -510,7 +516,7 @@
                                         <span class="text-muted">Total:</span>
                                         <span class="text-accent fs-base ms-1">₩{ 총 가격 }</span>
                                     </div>
-                                    <a class="btn btn-success btn-sm" href="order/cart-and-checkout.html">
+                                    <a class="btn btn-success btn-sm" href="order/checkout.html">
                                         <i class="ci-card me-2 fs-base align-middle"></i>Checkout<i
                                             class="ci-arrow-right ms-1 me-n1"></i>
                                     </a>
@@ -621,17 +627,18 @@
                                                     <i class="ci-bookmark">&nbsp Brand</i>
                                                 </li>
 
+                                                <!-- use Ajax .. to fetch brands from DB that matches the category -->
                                                 <li class="widget-list-item">
-                                                    <!-- insert the brandId at the end of href as param.. ie. product/category-and-brand?brandId=? -->
+                                                    <!-- use thymeleaf href here .. to insert the brandId at the end of href as param.. ie. brand/id=? -->
                                                     <a class="widget-list-link"
-                                                       href="product/category-and-brand.html">Beyond
+                                                       href="product/brand.html">Beyond
                                                         Meat</a>
                                                 </li>
 
                                                 <li class="widget-list-item">
                                                     <!-- insert the brandId at the end of href as param.. ie. product/category-and-brand?brandId=? -->
                                                     <a class="widget-list-link"
-                                                       href="product/category-and-brand.html">Sweet
+                                                       href="product/brand.html">Sweet
                                                         Earth</a>
                                                 </li>
 
@@ -666,13 +673,13 @@
                                                 <li class="widget-list-item">
                                                     <!-- insert the brandId at the end of href as param.. ie. product/category-and-brand?brandId=? -->
                                                     <a class="widget-list-link"
-                                                       href="product/category-and-brand.html">Oatly</a>
+                                                       href="product/brand.html">Oatly</a>
                                                 </li>
 
                                                 <li class="widget-list-item">
                                                     <!-- insert the brandId at the end of href as param.. ie. product/category-and-brand?brandId=? -->
                                                     <a class="widget-list-link"
-                                                       href="product/category-and-brand.html">Doozy
+                                                       href="product/brand.html">Doozy
                                                         Pots</a>
                                                 </li>
 
@@ -706,13 +713,13 @@
                                                 <li class="widget-list-item">
                                                     <!-- insert the brandId at the end of href as param.. ie. product/category-and-brand?brandId=? -->
                                                     <a class="widget-list-link"
-                                                       href="product/category-and-brand.html">Hippeas</a>
+                                                       href="product/brand.html">Hippeas</a>
                                                 </li>
 
                                                 <li class="widget-list-item">
                                                     <!-- insert the brandId at the end of href as param.. ie. product/category-and-brand?brandId=? -->
                                                     <a class="widget-list-link"
-                                                       href="product/category-and-brand.html">Terra</a>
+                                                       href="product/brand.html">Terra</a>
                                                 </li>
 
                                             </ul>
@@ -746,7 +753,7 @@
                                                 <li class="widget-list-item">
                                                     <!-- insert the brandId at the end of href as param.. ie. product/category-and-brand?brandId=? -->
                                                     <a class="widget-list-link"
-                                                       href="product/category-and-brand.html">Hope</a>
+                                                       href="product/brand.html">Hope</a>
                                                 </li>
 
                                             </ul>
@@ -1110,14 +1117,13 @@
                                     <div>
                                         <!-- insert image path of the recipe as background image url (ie. save/~) -->
                                         <div class="rounded-border bg-faded-primary text-center py-5 px-3"
-                                             style="background-image: url('../save/recipe/recipe1.jpg');">
+                                             style="background-image: url('../assets/img/background/bg10.jpg');">
                                             <h3 class="from-top">{ 레시피 이름 }</h3>
                                             <p class="fs-lg mb-4 pb-3 text-center from-bottom delay-1">Sponsored by :<br> { 레시피 연관상품
                                                 이름 }</p>
                                             <!-- insert the recipe id as param to get the right recipe page.. ie. recipe/recipe{recipeId}  -->
                                             <a href="cook/recipe.html">
-                                                <button class="btn btn-primary scale-down delay-2" type="button">Check
-                                                    this recipe
+                                                <button class="btn btn-primary scale-down delay-2" type="button">Check This Recipe
                                                 </button>
                                             </a>
                                         </div>
@@ -1127,14 +1133,13 @@
                                     <div>
                                         <!-- insert image path of the recipe as background image url (ie. save/~) -->
                                         <div class="rounded-border bg-faded-primary text-center py-5 px-3"
-                                             style="background-image: url('../save/recipe/recipe2.jpg');">
+                                             style="background-image: url('../assets/img/background/bg12.jpg');">
                                             <h3 class="from-top">{ 레시피 이름 }</h3>
                                             <p class="fs-lg mb-4 pb-3 from-bottom delay-1">Sponsored by :<br>{ 레시피 연관상품
                                                 이름 }</p>
                                             <!-- insert the recipe id as param to get the right recipe page.. ie. recipe/recipe{recipeId}  -->
                                             <a href="cook/recipe.html">
-                                                <button class="btn btn-primary scale-down delay-2" type="button">Check
-                                                    this recipe
+                                                <button class="btn btn-primary scale-down delay-2" type="button">Check This Recipe
                                                 </button>
                                             </a>
                                         </div>
@@ -1203,35 +1208,6 @@
                                                          href="#"><img
                                 class="d-block" src="../assets/img/logo/GentleGourmetLogo2.png" width="300"
                                 alt="Gentle Gourmet"></a>
-                            <div class="btn-group dropdown disable-autohide">
-                                <button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2"
-                                        type="button" data-bs-toggle="dropdown"><img class="me-2"
-                                                                                     src="../assets/img/flags/kr.png"
-                                                                                     width="20"
-                                                                                     alt="Korean">KOR / ₩
-                                </button>
-                                <ul class="dropdown-menu my-1">
-                                    <li class="dropdown-item">
-                                        <select class="form-select form-select-sm">
-                                            <option value="usd">$ USD</option>
-                                            <option value="eur">€ EUR</option>
-                                        </select>
-                                    </li>
-                                    <li><a class="dropdown-item pb-1" href="#"><img class="me-2"
-                                                                                    src="../assets/img/flags/en.png"
-                                                                                    width="20"
-                                                                                    alt="US">US</a></li>
-                                    <li><a class="dropdown-item pb-1" href="#"><img class="me-2"
-                                                                                    src="../assets/img/flags/fr.png"
-                                                                                    width="20"
-                                                                                    alt="Français">Français</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#"><img class="me-2"
-                                                                               src="../assets/img/flags/it.png"
-                                                                               width="20" alt="Italiano">Italiano</a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                         <div class="widget widget-links widget-light">
                             <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
@@ -1260,7 +1236,7 @@
                                 class="btn-social bs-light bs-youtube ms-2 mb-2" href="#"><i
                                 class="ci-youtube"></i></a>
                         </div>
-                        <img class="d-inline-block" src="../assets/img/cards-alt.png" width="187"
+                        <img class="d-inline-block" src="../assets/img/etc/cards-alt.png" width="187"
                              alt="Payment methods">
                     </div>
                 </div>
@@ -1304,27 +1280,35 @@
 
 </script>
 
-<!-- for promo video -->
+
 <script type="text/javascript">
 
     $(document).ready(function () {
 
+        <!-- for promo video -->
         $(".video").hover(hoverVideo, hideVideo);
-
         let vidEle = document.getElementById("theVideo");
-
         function hoverVideo(e) {
             $('video', this).get(0).play();
             //if muted, unmute
             vidEle.muted = false;
         }
-
         function hideVideo(e) {
             //once mouseover, mute
             vidEle.muted = true;
         }
 
-    }); //jQuery ends
+
+        <!-- trigger form submit on enter key event -->
+        $("#searchBar").keyup(function(event) {
+            console.log("keyboard event on searchBar -> ", event.key );
+            if (event.which === 13) {
+                event.preventDefault();
+                $("#searchBarForm").submit();
+            }
+        });
+
+    }); //jQuery init ends
 </script>
 
 <!--&lt;!&ndash; for nav-bar & side-nav-bar fade-in &ndash;&gt;-->
